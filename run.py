@@ -66,8 +66,18 @@ def play_against_player():
                 if game_board[number][player_one_turn] == "( )":
                     game_board[number][player_one_turn] = "(🔵)"
                     player_turns += 1
+                    break 
+        else:
+            display_board()
+
+            print(f"It is {player_two}'s turn")
+            player_two_turn = int(input("Please enter a column you would like to place your token: "))
+            player_two_turn -= 1
+            for number in range(6,-1,-1):
+                if game_board[number][player_two_turn] == "( )":
+                    game_board[number][player_two_turn] = "(🔴)"
+                    player_turns += 1
                     break
-            
 
 
 
