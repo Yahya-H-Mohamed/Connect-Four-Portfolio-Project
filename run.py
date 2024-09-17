@@ -19,4 +19,24 @@ def chooseOpponent():
         print("Incorrect input. Please enter one of the valid options provided\n")
         chooseOpponent()
 
-chooseOpponent()
+"""
+Step 2
+Create Board
+"""
+gameBoard = []
+
+def generateBoard():
+    for i in range(7):
+        gameBoard.append(["( )","( )","( )","( )","( )","( )","( )"])
+
+def displayBoard():
+    for i in range(len(gameBoard)):
+        print(" ".join(gameBoard[i]))
+
+
+def main():
+    chooseOpponent()
+    generateBoard()
+    displayBoard()
+
+main()
