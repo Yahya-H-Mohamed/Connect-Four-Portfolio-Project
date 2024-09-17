@@ -21,6 +21,7 @@ def choose_opponent():
     elif opponent.lower() == "p":
         #play against player function goes here
         print("Your opponent will be a player\n")
+        play_against_player()
     else:
         print("Incorrect input. Please enter one of the valid options provided\n")
         choose_pponent()
@@ -48,11 +49,30 @@ def display_board():
         print(" ".join(game_board[i]))
 
 def play_against_player():
-    player
+    player_one = input("Enter the first players name: ")
+    player_two = input("Enter the second players name: ")
+
+    player_turns = 1
+
+    while True:
+        if player_turns % 2 != 0:
+            display_board()
+
+            print(f"It is {player_one}'s turn")
+            player_one_turn = int(input("Please enter a column you would like to place your token: "))
+            player_one_turn -= 1
+
+            for number in range(6,-1,-1):
+                if game_board[number][player_one_turn] == "( )":
+                    game_board[number][player_one_turn] = "(🔵)"
+                    player_turns += 1
+                    break
+            
+
+
 
 def main():
-    choose_opponent()
     generate_board()
-    display_board()
+    choose_opponent()
 
 main()
