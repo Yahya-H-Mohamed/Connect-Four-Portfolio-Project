@@ -2,7 +2,13 @@
 Step 1
 Determine whether to play against computer or another player
 """
-def chooseOpponent():
+def choose_opponent():
+    """
+    This function asks the user whether they would like
+    to play against the computer or against another
+    player. It will force the user to re-enter their 
+    answer if they entered an invalid input
+    """
     print("Would you like to play against the computer or another player")
     print("Type 'c' for computer")
     print("Type 'p' for player")
@@ -17,26 +23,36 @@ def chooseOpponent():
         print("Your opponent will be a player\n")
     else:
         print("Incorrect input. Please enter one of the valid options provided\n")
-        chooseOpponent()
+        choose_pponent()
 
 """
 Step 2
-Create Board
+Create and print Board game
 """
-gameBoard = []
+game_board = []
 
-def generateBoard():
+def generate_board():
+    """
+    This function will append an array 
+    for each row of the game board
+    """
     for i in range(7):
-        gameBoard.append(["( )","( )","( )","( )","( )","( )","( )"])
+        game_board.append(["( )","( )","( )","( )","( )","( )","( )"])
 
-def displayBoard():
-    for i in range(len(gameBoard)):
-        print(" ".join(gameBoard[i]))
+def display_board():
+    """
+    This function will print each joined list in the
+    game_board list
+    """
+    for i in range(len(game_board)):
+        print(" ".join(game_board[i]))
 
+def play_against_player():
+    player
 
 def main():
-    chooseOpponent()
-    generateBoard()
-    displayBoard()
+    choose_opponent()
+    generate_board()
+    display_board()
 
 main()
