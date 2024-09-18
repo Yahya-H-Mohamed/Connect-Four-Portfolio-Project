@@ -1,4 +1,4 @@
-import random
+import random #This will be used in the versus computer mode
 
 """
 Step 1
@@ -31,7 +31,7 @@ def choose_opponent():
 Step 2
 Create and print Board game
 """
-game_board = []
+game_board = [] # This will hold the connect 4 tokens
 
 def generate_board():
     """
@@ -39,7 +39,7 @@ def generate_board():
     for each row of the game board
     """
     for i in range(7):
-        game_board.append(["(  )","(  )","(  )","(  )","(  )","(  )","(  )"])
+        game_board.append(["(  )","(  )","(  )","(  )","(  )","(  )","(  )"]) # Each row will be added to the game board list
 
 def display_board():
     """
@@ -56,6 +56,11 @@ Build game logic for player vs player mode.
 """
 
 def versus_player():
+    """
+    This function will take the names and positional inputs,
+    for each player and push them to the game board. If the determine
+    winner function returns true then the loop will be broken.
+    """
     running_game = True
 
     player_one = input("Enter the first players name: ")
@@ -79,7 +84,7 @@ def versus_player():
             for number in range(6,-1,-1):
                 if game_board[number][player_one_turn] == "(  )":
                     game_board[number][player_one_turn] = "(🔵)"
-                    if determine_winner(player, "(🔵)"):
+                    if determine_winner(player_one, "(🔵)"):
                         running_game = False
                     player_turns += 1
                     break 
@@ -109,6 +114,12 @@ Step 3
 Build game logic for player vs computer mode
 """
 def versus_computer():
+    """
+    This function will take the name and positional inputs from
+    the player and computerand push them to the game board. If 
+    the determine winner function returns true then the loop will 
+    be broken.
+    """
     running_game = True
 
     player = input("Enter your name: ")
@@ -161,7 +172,8 @@ Step 4
 Build a function that determines the winner of the match
 """
 def determine_winner(player, token):
-    for i in range(6):
+    #This loop will check columns to see if 4 tokens are of the same type
+    for i in range(7):
         for j in range(4):
             if(game_board[j][i] == token and game_board[j + 1][i] == token and game_board[j + 2][i] == token and game_board[j + 3][i] == token):
                 display_board()
@@ -169,9 +181,28 @@ def determine_winner(player, token):
                 print("Thank you for playing Connect 4")
                 return True
     
+    #This loop will check rows to see if 4 tokens are of the same type
     for i in range(6):
         for j in range(4):
             if(game_board[j][i] == token and game_board[j][i + 1] == token and game_board[j][i + 2] == token and game_board[j][i + 3] == token):
+                display_board()
+                print(f"{player} WINS!!!")
+                print("Thank you for playing Connect 4")
+                return True
+
+    #This loop will check the game board diagonally to see if 4 tokens are of the same type
+    for i in range(4):
+        for j in range(3, 7):
+            if(game_board[i][j] == token and game_board[i + 1][j - 1] == token and game_board[i + 2][j - 2] == token and game_board[i + 3][j - 3] == token):
+                display_board()
+                print(f"{player} WINS!!!")
+                print("Thank you for playing Connect 4")
+                return True
+    
+    #This loop will check the game board diagonally (backwards) to see if 4 tokens are of the same type
+    for i in range(4):
+        for j in range(4):
+            if(game_board[j][i] == token and game_board[j + 1][i + 1] == token and game_board[j + 2][i + 2] == token and game_board[j + 3][i + 3] == token):
                 display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
