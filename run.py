@@ -56,12 +56,14 @@ Build game logic for player vs player mode.
 """
 
 def versus_player():
+    running_game = True
+
     player_one = input("Enter the first players name: ")
     player_two = input("Enter the second players name: ")
 
     player_turns = 1 
 
-    while True:
+    while running_game:
         if player_turns % 2 != 0:
             display_board()
 
@@ -77,6 +79,7 @@ def versus_player():
             for number in range(6,-1,-1):
                 if game_board[number][player_one_turn] == "(  )":
                     game_board[number][player_one_turn] = "(🔵)"
+                    determine_winner(player_one, "(🔵)")
                     player_turns += 1
                     break 
         else:
@@ -94,6 +97,7 @@ def versus_player():
             for number in range(6,-1,-1):
                 if game_board[number][player_two_turn] == "(  )":
                     game_board[number][player_two_turn] = "(🔴)"
+                    determine_winner(player_two, "(🔴)")
                     player_turns += 1
                     break    
 
@@ -123,6 +127,9 @@ def versus_computer():
             for number in range(6,-1,-1):
                 if game_board[number][player_one_turn] == "(  )":
                     game_board[number][player_one_turn] = "(🔵)"
+                    if determine_winner(player_one, "(🔵)"):
+                        determine_winner(player_one, "(🔵)")
+                        running_game = False
                     player_turns += 1
                     break 
         else:
@@ -140,9 +147,29 @@ def versus_computer():
             for number in range(6,-1,-1):
                 if game_board[number][computers_turn] == "(  )":
                     game_board[number][computers_turn] = "(🔴)"
+                    determine_winner("Computer", "(🔴)")
                     player_turns += 1
                     break
 
+"""
+Step 4
+
+Build a function that determines the winner of the match
+"""
+def determine_winner(player, token):
+    for i in range(6):
+        for j in range(4):
+            if(game_board[j][i] == token and game_board[j + 1][i] == token and game_board[j + 2][i] == token and game_board[j + 3][i] == token):
+                print(f"{player} WINS!!!")
+                print("Thank you for playing Connect 4")
+                return True
+    
+    for i in range(6):
+        for j in range(4):
+            if(game_board[j][i] == token and game_board[j][i + 1] == token and game_board[j][i + 2] == token and game_board[j][i + 3] == token):
+                print(f"{player} WINS!!!")
+                print("Thank you for playing Connect 4")
+                return True
 
 def main():
     generate_board()
