@@ -19,12 +19,11 @@ def choose_opponent():
         #play against computer function goes here
         print("Your opponent will be the computer\n")
     elif opponent.lower() == "p":
-        #play against player function goes here
         print("Your opponent will be a player\n")
         play_against_player()
     else:
         print("Incorrect input. Please enter one of the valid options provided\n")
-        choose_pponent()
+        choose_opponent()
 
 """
 Step 2
@@ -38,7 +37,7 @@ def generate_board():
     for each row of the game board
     """
     for i in range(7):
-        game_board.append(["( )","( )","( )","( )","( )","( )","( )"])
+        game_board.append(["(  )","(  )","(  )","(  )","(  )","(  )","(  )"])
 
 def display_board():
     """
@@ -48,36 +47,49 @@ def display_board():
     for i in range(len(game_board)):
         print(" ".join(game_board[i]))
 
+"""
+Step 3
+
+Build game logic for player vs player mode.
+"""
+
 def play_against_player():
     player_one = input("Enter the first players name: ")
     player_two = input("Enter the second players name: ")
 
-    player_turns = 1
+    player_turns = 1 
 
     while True:
         if player_turns % 2 != 0:
             display_board()
 
-            print(f"It is {player_one}'s turn")
+            print(f"It is {player_one}'s turn (🔵)")
             player_one_turn = int(input("Please enter a column you would like to place your token: "))
             player_one_turn -= 1
 
+            while True:
+                if game_board[0][player_one_turn] != "(  )":
+                    player_one_turn = int(input("That column is full. Please choose another column you would like to place your token: "))
+                    player_one_turn -= 1
+                break
+                    
             for number in range(6,-1,-1):
-                if game_board[number][player_one_turn] == "( )":
+                if game_board[number][player_one_turn] == "(  )":
                     game_board[number][player_one_turn] = "(🔵)"
                     player_turns += 1
                     break 
         else:
             display_board()
 
-            print(f"It is {player_two}'s turn")
+            print(f"It is {player_two}'s turn (🔴)")
             player_two_turn = int(input("Please enter a column you would like to place your token: "))
             player_two_turn -= 1
+
             for number in range(6,-1,-1):
-                if game_board[number][player_two_turn] == "( )":
+                if game_board[number][player_two_turn] == "(  )":
                     game_board[number][player_two_turn] = "(🔴)"
                     player_turns += 1
-                    break
+                    break    
 
 
 
