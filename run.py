@@ -1,3 +1,5 @@
+import random
+
 """
 Step 1
 Determine whether to play against computer or another player
@@ -16,11 +18,11 @@ def choose_opponent():
     opponent = input("Enter: ")
 
     if opponent.lower() == "c":
-        #play against computer function goes here
         print("Your opponent will be the computer\n")
+        versus_computer()
     elif opponent.lower() == "p":
         print("Your opponent will be a player\n")
-        play_against_player()
+        versus_player()
     else:
         print("Incorrect input. Please enter one of the valid options provided\n")
         choose_opponent()
@@ -53,7 +55,7 @@ Step 3
 Build game logic for player vs player mode.
 """
 
-def play_against_player():
+def versus_player():
     player_one = input("Enter the first players name: ")
     player_two = input("Enter the second players name: ")
 
@@ -95,6 +97,51 @@ def play_against_player():
                     player_turns += 1
                     break    
 
+"""
+Step 3 
+
+Build game logic for player vs computer mode
+"""
+def versus_computer():
+    player_one = input("Enter your name: ")
+
+    player_turns = 1 
+
+    while True:
+        if player_turns % 2 != 0:
+            display_board()
+
+            print(f"It is {player_one}'s turn (🔵)")
+            player_one_turn = int(input("Please enter a column you would like to place your token: "))
+            player_one_turn -= 1
+
+            while True:
+                if game_board[0][player_one_turn] != "(  )":
+                    print("That column is full. Please choose another column you would like to place your token")
+                break
+                    
+            for number in range(6,-1,-1):
+                if game_board[number][player_one_turn] == "(  )":
+                    game_board[number][player_one_turn] = "(🔵)"
+                    player_turns += 1
+                    break 
+        else:
+            display_board()
+
+            print(f"It the computer's turn (🔴)")
+            computers_turn = random.randint(0, 6)
+            print(f"The computer chose: {computers_turn + 1}")
+
+            while True:
+                if game_board[0][computers_turn] != "(  )":
+                    print("Oops! The computer chose a column that was full. It will try again")
+                break
+
+            for number in range(6,-1,-1):
+                if game_board[number][computers_turn] == "(  )":
+                    game_board[number][computers_turn] = "(🔴)"
+                    player_turns += 1
+                    break
 
 
 def main():
