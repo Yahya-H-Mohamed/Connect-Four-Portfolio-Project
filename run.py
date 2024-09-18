@@ -107,28 +107,29 @@ Step 3
 Build game logic for player vs computer mode
 """
 def versus_computer():
-    player_one = input("Enter your name: ")
+    running_game = True
+
+    player = input("Enter your name: ")
 
     player_turns = 1 
 
-    while True:
+    while running_game:
         if player_turns % 2 != 0:
             display_board()
 
-            print(f"It is {player_one}'s turn (🔵)")
-            player_one_turn = int(input("Please enter a column you would like to place your token: "))
-            player_one_turn -= 1
+            print(f"It is {player}'s turn (🔵)")
+            player_turn = int(input("Please enter a column you would like to place your token: "))
+            player_turn -= 1
 
             while True:
-                if game_board[0][player_one_turn] != "(  )":
+                if game_board[0][player_turn] != "(  )":
                     print("That column is full. Please choose another column you would like to place your token")
                 break
                     
             for number in range(6,-1,-1):
-                if game_board[number][player_one_turn] == "(  )":
-                    game_board[number][player_one_turn] = "(🔵)"
-                    if determine_winner(player_one, "(🔵)"):
-                        determine_winner(player_one, "(🔵)")
+                if game_board[number][player_turn] == "(  )":
+                    game_board[number][player_turn] = "(🔵)"
+                    if determine_winner(player, "(🔵)"):
                         running_game = False
                     player_turns += 1
                     break 
@@ -160,6 +161,7 @@ def determine_winner(player, token):
     for i in range(6):
         for j in range(4):
             if(game_board[j][i] == token and game_board[j + 1][i] == token and game_board[j + 2][i] == token and game_board[j + 3][i] == token):
+                display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
