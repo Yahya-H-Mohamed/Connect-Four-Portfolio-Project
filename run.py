@@ -54,7 +54,6 @@ Step 3
 
 Build game logic for player vs player mode.
 """
-
 def versus_player():
     """
     This function will take the names and positional inputs,
@@ -65,7 +64,6 @@ def versus_player():
 
     player_one = input("Enter the first players name: ")
     player_two = input("Enter the second players name: ")
-
     player_turns = 1 
 
     while running_game:
@@ -73,17 +71,28 @@ def versus_player():
             display_board()
 
             print(f"It is {player_one}'s turn (🔵)")
-            player_one_turn = int(input("Please enter a column you would like to place your token: "))
-            player_one_turn -= 1
+            while True:
+                try:
+                    player_one_input = int(input("Please enter a column you would like to place your token(1-7): "))
+                    valid_answer = [1,2,3,4,5,6,7]
+                    if player_one_input not in valid_answer:
+                        raise ValueError(f"The value must be between 1 and 7. You chose {player_one_input}")
+                    else:
+                        player_one_input -= 1
+                        break
+                except ValueError as e:
+                    print(f"Invalid input: {e}, please try again. \n")
+            
+            
 
             while True:
-                if game_board[0][player_one_turn] != "(  )":
+                if game_board[0][player_one_input] != "(  )":
                     print("That column is full. Please choose another column you would like to place your token")
                 break
                     
             for number in range(6,-1,-1):
-                if game_board[number][player_one_turn] == "(  )":
-                    game_board[number][player_one_turn] = "(🔵)"
+                if game_board[number][player_one_input] == "(  )":
+                    game_board[number][player_one_input] = "(🔵)"
                     if determine_winner(player_one, "(🔵)"):
                         running_game = False
                     player_turns += 1
@@ -92,17 +101,26 @@ def versus_player():
             display_board()
 
             print(f"It is {player_two}'s turn (🔴)")
-            player_two_turn = int(input("Please enter a column you would like to place your token: "))
-            player_two_turn -= 1
+            while True:
+                try:
+                    player_two_input = int(input("Please enter a column you would like to place your token(1-7): "))
+                    valid_answer = [1,2,3,4,5,6,7]
+                    if player_two_input not in valid_answer:
+                        raise ValueError(f"The value must be between 1 and 7. You chose {player_two_input}")
+                    else:
+                        player_two_input -= 1
+                        break
+                except ValueError as e:
+                    print(f"Invalid input: {e}, please try again. \n")
 
             while True:
-                if game_board[0][player_two_turn] != "(  )":
+                if game_board[0][player_two_input] != "(  )":
                     print("That column is full. Please choose another column you would like to place your token")
                 break
 
             for number in range(6,-1,-1):
-                if game_board[number][player_two_turn] == "(  )":
-                    game_board[number][player_two_turn] = "(🔴)"
+                if game_board[number][player_two_input] == "(  )":
+                    game_board[number][player_two_input] = "(🔴)"
                     if determine_winner(player_two, "(🔴)"):
                         running_game = False
                     player_turns += 1
@@ -123,7 +141,6 @@ def versus_computer():
     running_game = True
 
     player = input("Enter your name: ")
-
     player_turns = 1 
 
     while running_game:
@@ -131,17 +148,26 @@ def versus_computer():
             display_board()
 
             print(f"It is {player}'s turn (🔵)")
-            player_turn = int(input("Please enter a column you would like to place your token: "))
-            player_turn -= 1
+            while True:
+                try:
+                    player_input = int(input("Please enter a column you would like to place your token(1-7): "))
+                    valid_answer = [1,2,3,4,5,6,7]
+                    if player_input not in valid_answer:
+                        raise ValueError(f"The value must be between 1 and 7. You chose {player_input}")
+                    else:
+                        player_input -= 1
+                        break
+                except ValueError as e:
+                    print(f"Invalid input: {e}, please try again. \n")
 
             while True:
-                if game_board[0][player_turn] != "(  )":
+                if game_board[0][player_input] != "(  )":
                     print("That column is full. Please choose another column you would like to place your token")
                 break
                     
             for number in range(6,-1,-1):
-                if game_board[number][player_turn] == "(  )":
-                    game_board[number][player_turn] = "(🔵)"
+                if game_board[number][player_input] == "(  )":
+                    game_board[number][player_input] = "(🔵)"
                     if determine_winner(player, "(🔵)"):
                         running_game = False
                     player_turns += 1
@@ -150,17 +176,17 @@ def versus_computer():
             display_board()
 
             print(f"It the computer's turn (🔴)")
-            computers_turn = random.randint(0, 6)
-            print(f"The computer chose: {computers_turn + 1}")
+            computer_input = random.randint(0, 6)
+            print(f"The computer chose: {computer_input + 1}")
 
             while True:
-                if game_board[0][computers_turn] != "(  )":
+                if game_board[0][computer_input] != "(  )":
                     print("Oops! The computer chose a column that was full. It will try again")
                 break
 
             for number in range(6,-1,-1):
-                if game_board[number][computers_turn] == "(  )":
-                    game_board[number][computers_turn] = "(🔴)"
+                if game_board[number][computer_input] == "(  )":
+                    game_board[number][computer_input] = "(🔴)"
                     if determine_winner("Computer", "(🔴)"):
                         running_game = False
                     player_turns += 1
