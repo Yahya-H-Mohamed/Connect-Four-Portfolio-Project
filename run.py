@@ -69,8 +69,7 @@ def play_against_player():
 
             while True:
                 if game_board[0][player_one_turn] != "(  )":
-                    player_one_turn = int(input("That column is full. Please choose another column you would like to place your token: "))
-                    player_one_turn -= 1
+                    print("That column is full. Please choose another column you would like to place your token")
                 break
                     
             for number in range(6,-1,-1):
@@ -84,6 +83,11 @@ def play_against_player():
             print(f"It is {player_two}'s turn (🔴)")
             player_two_turn = int(input("Please enter a column you would like to place your token: "))
             player_two_turn -= 1
+
+            while True:
+                if game_board[0][player_two_turn] != "(  )":
+                    print("That column is full. Please choose another column you would like to place your token")
+                break
 
             for number in range(6,-1,-1):
                 if game_board[number][player_two_turn] == "(  )":
