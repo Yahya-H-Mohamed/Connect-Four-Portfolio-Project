@@ -1,9 +1,5 @@
 import random #This will be used in the versus computer mode
 
-"""
-Step 1
-Determine whether to play against computer or another player
-"""
 def choose_opponent():
     """
     This function asks the user whether they would like
@@ -27,10 +23,6 @@ def choose_opponent():
         print("Incorrect input. Please enter one of the valid options provided\n")
         choose_opponent()
 
-"""
-Step 2
-Create and print Board game
-"""
 game_board = [] # This will hold the connect 4 tokens
 
 def generate_board():
@@ -49,11 +41,6 @@ def display_board():
     for i in range(len(game_board)):
         print(" ".join(game_board[i]))
 
-"""
-Step 3
-
-Build game logic for player vs player mode.
-"""
 def versus_player():
     """
     This function will take the names and positional inputs,
@@ -126,11 +113,6 @@ def versus_player():
                     player_turns += 1
                     break    
 
-"""
-Step 3 
-
-Build game logic for player vs computer mode
-"""
 def versus_computer():
     """
     This function will take the name and positional inputs from
@@ -192,12 +174,12 @@ def versus_computer():
                     player_turns += 1
                     break
 
-"""
-Step 4
-
-Build a function that determines the winner of the match
-"""
 def determine_winner(player, token):
+    """
+    This function will loop through all possible positions in the game board
+    to check if there are atleast 4 consecutive tokens of the same type going
+    in all directions. If there are it will return true.
+    """
     #This loop will check columns to see if 4 tokens are of the same type
     for i in range(7):
         for j in range(4):
