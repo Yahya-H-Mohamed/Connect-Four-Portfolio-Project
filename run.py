@@ -79,7 +79,8 @@ def versus_player():
             for number in range(6,-1,-1):
                 if game_board[number][player_one_turn] == "(  )":
                     game_board[number][player_one_turn] = "(🔵)"
-                    determine_winner(player_one, "(🔵)")
+                    if determine_winner(player, "(🔵)"):
+                        running_game = False
                     player_turns += 1
                     break 
         else:
@@ -97,7 +98,8 @@ def versus_player():
             for number in range(6,-1,-1):
                 if game_board[number][player_two_turn] == "(  )":
                     game_board[number][player_two_turn] = "(🔴)"
-                    determine_winner(player_two, "(🔴)")
+                    if determine_winner(player_two, "(🔴)"):
+                        running_game = False
                     player_turns += 1
                     break    
 
@@ -148,7 +150,8 @@ def versus_computer():
             for number in range(6,-1,-1):
                 if game_board[number][computers_turn] == "(  )":
                     game_board[number][computers_turn] = "(🔴)"
-                    determine_winner("Computer", "(🔴)")
+                    if determine_winner("Computer", "(🔴)"):
+                        running_game = False
                     player_turns += 1
                     break
 
@@ -169,6 +172,7 @@ def determine_winner(player, token):
     for i in range(6):
         for j in range(4):
             if(game_board[j][i] == token and game_board[j][i + 1] == token and game_board[j][i + 2] == token and game_board[j][i + 3] == token):
+                display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
