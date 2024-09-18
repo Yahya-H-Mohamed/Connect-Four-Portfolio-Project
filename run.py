@@ -208,8 +208,8 @@ def determine_winner(player, token):
                 return True
     
     #This loop will check rows to see if 4 tokens are of the same type
-    for i in range(6):
-        for j in range(4):
+    for i in range(4):
+        for j in range(7):
             if(game_board[j][i] == token and game_board[j][i + 1] == token and game_board[j][i + 2] == token and game_board[j][i + 3] == token):
                 display_board()
                 print(f"{player} WINS!!!")
