@@ -52,11 +52,14 @@ def versus_player():
     for each player and push them to the game board. If the determine
     winner function returns true then the loop will be broken.
     """
-    running_game = True  # This variable will determine whether the gameplay loop should end or keep running based on the players turn result
+    running_game = True  # Determines whether loop should continue or terminate
 
-    player_one = input("Enter the first players name: ")  # First players name
-    player_two = input("Enter the second players name: ")  # Second players name
-    player_turns = 1  # This variable will determine which players turn it is
+    # First players name
+    player_one = input("Enter the first players name: ")
+    # Second players name
+    player_two = input("Enter the second players name: ")
+    # This variable will determine which players turn it is
+    player_turns = 1
 
     while running_game:
         if player_turns % 2 != 0:
@@ -65,27 +68,30 @@ def versus_player():
             print(f"It is {player_one}'s turn (🔵)")
             while True:
                 try:
-                    player_one_input = int(input("Please enter a column you would like to place your token(1-7): "))
-                    valid_answer = [1,2,3,4,5,6,7]
+                    player_one_input = int(input("Enter a column(1-7): "))
+                    valid_answer = [1, 2, 3, 4, 5, 6, 7]
                     if player_one_input not in valid_answer:
-                        raise ValueError(f"The value must be between 1 and 7. You chose {player_one_input}")
+                        raise ValueError(f"The value must be between 1 and 7.")
                     else:
                         player_one_input -= 1
                         break
                 except ValueError as e:
                     print(f"Invalid input: {e}, please try again. \n")
-            
-            
 
             while True:
-                if game_board[0][player_one_input] != "(  )":  # If the top row of the column the player chose is full they must choose another column
-                    print("That column is full. Please choose another column you would like to place your token")
+                # If the column is full they must choose another column
+                if game_board[0][player_one_input] != "(  )":
+                    print("That column is full. Choose another column.")
                 break
-                    
-            for number in range(6,-1,-1):  # This loop checks every space on the board
-                if game_board[number][player_one_input] == "(  )":  # If the space the player chose is empty
-                    game_board[number][player_one_input] = "(🔵)"  # Input their token
-                    if determine_winner(player_one, "(🔵)"):  # If any of the win conditions returns true
+
+            # This loop checks every space on the board
+            for number in range(6, -1, -1):
+                # If the space the player chose is empty
+                if game_board[number][player_one_input] == "(  )":
+                    # Input their token
+                    game_board[number][player_one_input] = "(🔵)"
+                    # If any of the win conditions returns true
+                    if determine_winner(player_one, "(🔵)"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -98,10 +104,10 @@ def versus_player():
             print(f"It is {player_two}'s turn (🔴)")
             while True:
                 try:
-                    player_two_input = int(input("Please enter a column you would like to place your token(1-7): "))
-                    valid_answer = [1,2,3,4,5,6,7]
+                    player_two_input = int(input("Enter a column(1-7): "))
+                    valid_answer = [1, 2, 3, 4, 5, 6, 7]
                     if player_two_input not in valid_answer:
-                        raise ValueError(f"The value must be between 1 and 7. You chose {player_two_input}")
+                        raise ValueError(f"The value must be between 1 and 7.")
                     else:
                         player_two_input -= 1
                         break
@@ -109,14 +115,19 @@ def versus_player():
                     print(f"Invalid input: {e}, please try again. \n")
 
             while True:
-                if game_board[0][player_two_input] != "(  )":  # If the top row of the column the player chose is full they must choose another column
-                    print("That column is full. Please choose another column you would like to place your token")
+                # If the column is full they must choose another column
+                if game_board[0][player_two_input] != "(  )":
+                    print("That column is full. Choose another column.")
                 break
 
-            for number in range(6,-1,-1):  # This loop checks every space on the board
-                if game_board[number][player_two_input] == "(  )":  # If the space the player chose is empty
-                    game_board[number][player_two_input] = "(🔴)"  # Input their token
-                    if determine_winner(player_two, "(🔴)"):  # If any of the win conditions returns true
+            # This loop checks every space on the board
+            for number in range(6, -1, -1):
+                # If the space the player chose is empty
+                if game_board[number][player_two_input] == "(  )":
+                    # Input their token
+                    game_board[number][player_two_input] = "(🔴)"
+                    # If any of the win conditions returns true
+                    if determine_winner(player_two, "(🔴)"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -128,11 +139,11 @@ def versus_player():
 def versus_computer():
     """
     This function will take the name and positional inputs from
-    the player and computerand push them to the game board. If 
-    the determine winner function returns true then the loop will 
+    the player and computerand push them to the game board. If
+    the determine winner function returns true then the loop will
     be broken.
     """
-    running_game = True  # This variable will determine whether the gameplay loop should end or keep running based on the players turn result
+    running_game = True  # Determines whether loop should continue or terminate
 
     player = input("Enter your name: ")  # Enter player name
     player_turns = 1  # This variable will determine which players turn it is
@@ -144,10 +155,10 @@ def versus_computer():
             print(f"It is {player}'s turn (🔵)")
             while True:
                 try:
-                    player_input = int(input("Please enter a column you would like to place your token(1-7): "))
-                    valid_answer = [1,2,3,4,5,6,7]
+                    player_input = int(input("Enter a column(1-7): "))
+                    valid_answer = [1, 2, 3, 4, 5, 6, 7]
                     if player_input not in valid_answer:
-                        raise ValueError(f"The value must be between 1 and 7. You chose {player_input}")
+                        raise ValueError(f"The value must be between 1 and 7.")
                     else:
                         player_input -= 1
                         break
@@ -155,11 +166,12 @@ def versus_computer():
                     print(f"Invalid input: {e}, please try again. \n")
 
             while True:
-                if game_board[0][player_input] != "(  )":  # If the top row of the column the player chose is full they must choose another column
-                    print("That column is full. Please choose another column you would like to place your token")
+                # If the column is full they must choose another column
+                if game_board[0][player_input] != "(  )":
+                    print("That column is full. Choose another column")
                 break
-                    
-            for number in range(6,-1,-1):  # This loop checks every space on the board
+
+            for number in range(6, -1, -1):  # This loop checks every space on the board
                 if game_board[number][player_input] == "(  )":  # If the space the player chose is empty
                     game_board[number][player_input] = "(🔵)"  # Input their token
                     if determine_winner(player, "(🔵)"):  # If any of the win conditions returns true
@@ -181,7 +193,7 @@ def versus_computer():
                     print("Oops! The computer chose a column that was full. It will try again")
                 break
 
-            for number in range(6,-1,-1):  # This loop checks every space on the board
+            for number in range(6, -1, -1):  # This loop checks every space on the board
                 if game_board[number][computer_input] == "(  )":  # If the space the computer chose is empty
                     game_board[number][computer_input] = "(🔴)"  # Input their token
                     if determine_winner("Computer", "(🔴)"):  # If any of the win conditions returns true
@@ -207,7 +219,7 @@ def determine_winner(player, token):
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
-    
+
     # This loop will check rows to see if 4 tokens are of the same type
     for i in range(4):
         for j in range(7):
@@ -225,7 +237,7 @@ def determine_winner(player, token):
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
-    
+
     # This loop will check the game board diagonally (backwards) to see if 4 tokens are of the same type
     for i in range(4):
         for j in range(4):
@@ -249,7 +261,7 @@ def draw_state():
         for j in range(7):
             if game_board[i][j] != "(  )":  # If the current space is not full
                 count += 1  # Increment the count by one
-    
+
     if count == 42:  # If the count equals 42 (the amount of spaces on the board) this condition will execute
         print(f"It was a draw. Game Over!")
         print("Thank you for playing Connect 4")
