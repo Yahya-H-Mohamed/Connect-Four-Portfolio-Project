@@ -2,11 +2,12 @@ import random  # This will be used in the versus computer mode
 
 game_board = []  # This will hold the connect 4 tokens
 
+
 def choose_opponent():
     """
     This function asks the user whether they would like
     to play against the computer or against another
-    player. It will force the user to re-enter their 
+    player. It will force the user to re-enter their
     answer if they entered an invalid input
     """
     print("Would you like to play against the computer or another player")
@@ -22,17 +23,18 @@ def choose_opponent():
         print("Your opponent will be a player\n")
         versus_player()
     else:
-        print("Incorrect input. Please enter one of the valid options provided\n")
+        print("Invalid input. Please enter one of the valid options\n")
         choose_opponent()
 
 
 def generate_board():
     """
-    This function will append an array 
+    This function will append an array
     for each row of the game board
     """
     for i in range(7):
-        game_board.append(["(  )","(  )","(  )","(  )","(  )","(  )","(  )"]) # Each row will be added to the game board list
+        # Each row will be added to the game board list
+        game_board.append(["(  )" * 7])
 
 
 def display_board():
@@ -245,8 +247,8 @@ def draw_state():
     # This will loop through the entire board
     for i in range(6):
         for j in range(7):
-            if game_board[i][j] != "(  )": #If the current space is not full
-                count += 1 #Increment the count by one
+            if game_board[i][j] != "(  )":  # If the current space is not full
+                count += 1  # Increment the count by one
     
     if count == 42:  # If the count equals 42 (the amount of spaces on the board) this condition will execute
         print(f"It was a draw. Game Over!")
