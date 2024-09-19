@@ -31,3 +31,23 @@ Each turn the current player is given the choice between 7 columns to place thei
 - - Cannot choose a column when it is full
 
 	![Image showing input validation when user selects a column that is already full](/assets/images/Full-column.png)
+
+## Planned Features
+- Better computer intelligence
+- Multiple token icons for players to choose from
+
+## Testing
+
+## Deployment
+This project was deployed using Code Institutes mock terminal for Heroku.
+
+- Steps for deployment
+- - Fork or Clone this repository
+- - Create a new Heroku application
+- - Set the buildpack to Python and NodeJS in that order
+- - Link the Heroku app to the repository
+- - Click on Deploy
+
+## Credits
+- Code institute for the deployment terminal
+- Hasbro Website for Connect 4 instructions
