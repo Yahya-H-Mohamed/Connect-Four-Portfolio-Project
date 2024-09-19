@@ -73,7 +73,7 @@ def versus_player():
             
 
             while True:
-                if game_board[0][player_one_input] != "(  )": #If the top row of the column they player chose is full they must choose another column
+                if game_board[0][player_one_input] != "(  )": #If the top row of the column the player chose is full they must choose another column
                     print("That column is full. Please choose another column you would like to place your token")
                 break
                     
@@ -104,12 +104,12 @@ def versus_player():
                     print(f"Invalid input: {e}, please try again. \n")
 
             while True:
-                if game_board[0][player_two_input] != "(  )": #If the top row of the column they player chose is full they must choose another column
+                if game_board[0][player_two_input] != "(  )": #If the top row of the column the computer chose is full they must choose another column
                     print("That column is full. Please choose another column you would like to place your token")
                 break
 
             for number in range(6,-1,-1): #This loop checks every space on the board
-                if game_board[number][player_two_input] == "(  )": #If the space the player chose is empty
+                if game_board[number][player_two_input] == "(  )": #If the space the computer chose is empty
                     game_board[number][player_two_input] = "(🔴)" #Input their token
                     if determine_winner(player_two, "(🔴)"):  #If any of the win conditions returns true
                         running_game = False #End game
@@ -126,10 +126,10 @@ def versus_computer():
     the determine winner function returns true then the loop will 
     be broken.
     """
-    running_game = True
+    running_game = True #This variable will determine whether the gameplay loop should end or keep running based on the players turn result
 
-    player = input("Enter your name: ")
-    player_turns = 1 
+    player = input("Enter your name: ") #Enter player name
+    player_turns = 1 #this variable will determine which players turn it is
 
     while running_game:
         if player_turns % 2 != 0:
@@ -149,20 +149,20 @@ def versus_computer():
                     print(f"Invalid input: {e}, please try again. \n")
 
             while True:
-                if game_board[0][player_input] != "(  )":
+                if game_board[0][player_input] != "(  )": #If the top row of the column the player chose is full they must choose another column
                     print("That column is full. Please choose another column you would like to place your token")
                 break
                     
-            for number in range(6,-1,-1):
-                if game_board[number][player_input] == "(  )":
-                    game_board[number][player_input] = "(🔵)"
-                    if determine_winner(player, "(🔵)"):
-                        running_game = False
-                    elif draw_state():
-                        running_game = False
-                    else:
+            for number in range(6,-1,-1): #This loop checks every space on the board
+                if game_board[number][player_input] == "(  )": #If the space the player chose is empty
+                    game_board[number][player_input] = "(🔵)" #Input their token
+                    if determine_winner(player, "(🔵)"): #If any of the win conditions returns true
+                        running_game = False #End game
+                    elif draw_state(): #If the draw condition returns true
+                        running_game = False # End game
+                    else: #If neither of those are true the game continues
                         player_turns += 1
-                    break 
+                    break #Ends player turn
         else:
             display_board()
 
