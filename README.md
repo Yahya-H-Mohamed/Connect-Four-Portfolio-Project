@@ -15,3 +15,19 @@ If the user chose to play against another player, they will have the choice to e
 Player (1) will always have the first turn are are assigned the token "🔵". The second player/computer are assigned the token "🔴".
 
 Each turn the current player is given the choice between 7 columns to place their token into. The first player to get 4 of their tokens next to each other, horizontally, vertically or diagonally wins.
+
+## Features
+- Versus Player Mode
+- Versus Computer Mode
+- Updates and displays the game board after every turn
+
+	![Image showing board display functionality after every turn](/assets/images/Display.png)
+
+- Input Validation
+- - Cannot enter a number below 1 or above 7 or non number characters
+
+	![Image showing input validation for numbers below 1, above 7 and non number inputs](/assets/images/Validation.png)
+
+- - Cannot choose a column when it is full
+
+	![Image showing input validation when user selects a column that is already full](/assets/images/Full-column.png)
