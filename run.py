@@ -82,8 +82,11 @@ def versus_player():
                     game_board[number][player_one_input] = "(🔵)"
                     if determine_winner(player_one, "(🔵)"):
                         running_game = False
-                    player_turns += 1
-                    break 
+                    elif draw_state():
+                        running_game = False
+                    else:
+                        player_turns += 1
+                        break 
         else:
             display_board()
 
@@ -110,8 +113,11 @@ def versus_player():
                     game_board[number][player_two_input] = "(🔴)"
                     if determine_winner(player_two, "(🔴)"):
                         running_game = False
-                    player_turns += 1
-                    break    
+                    elif draw_state():
+                        running_game = False
+                    else:
+                        player_turns += 1
+                        break    
 
 def versus_computer():
     """
@@ -215,6 +221,18 @@ def determine_winner(player, token):
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
+
+def draw_state():
+    count = 0
+    for i in range(6):
+        for j in range(7):
+            if game_board[i][j] != "(  )":
+                count += 1
+    
+    if count == 42:
+        print(f"It was a draw. Game Over!")
+        print("Thank you for playing Connect 4")
+        return True
 
 def main():
     generate_board()
