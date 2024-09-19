@@ -25,6 +25,7 @@ def choose_opponent():
         print("Incorrect input. Please enter one of the valid options provided\n")
         choose_opponent()
 
+
 def generate_board():
     """
     This function will append an array 
@@ -33,6 +34,7 @@ def generate_board():
     for i in range(7):
         game_board.append(["(  )","(  )","(  )","(  )","(  )","(  )","(  )"]) # Each row will be added to the game board list
 
+
 def display_board():
     """
     This function will print each joined list in the
@@ -40,6 +42,7 @@ def display_board():
     """
     for i in range(len(game_board)):
         print(" ".join(game_board[i]))
+
 
 def versus_player():
     """
@@ -119,6 +122,7 @@ def versus_player():
                         player_turns += 1
                         break  # Ends current player turn
 
+
 def versus_computer():
     """
     This function will take the name and positional inputs from
@@ -186,6 +190,7 @@ def versus_computer():
                         player_turns += 1
                     break  # Ends computer turn
 
+
 def determine_winner(player, token):
     """
     This function will loop through all possible positions in the game board
@@ -228,6 +233,7 @@ def determine_winner(player, token):
                 print("Thank you for playing Connect 4")
                 return True
 
+
 def draw_state():
     """
     This function checks every space on the game
@@ -247,11 +253,13 @@ def draw_state():
         print("Thank you for playing Connect 4")
         return True
 
+
 def main():
     """
     Runs functions
     """
     generate_board()
     choose_opponent()
+
 
 main()
