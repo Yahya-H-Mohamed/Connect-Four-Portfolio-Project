@@ -171,10 +171,14 @@ def versus_computer():
                     print("That column is full. Choose another column")
                 break
 
-            for number in range(6, -1, -1):  # This loop checks every space on the board
-                if game_board[number][player_input] == "(  )":  # If the space the player chose is empty
-                    game_board[number][player_input] = "(🔵)"  # Input their token
-                    if determine_winner(player, "(🔵)"):  # If any of the win conditions returns true
+            # This loop checks every space on the board
+            for number in range(6, -1, -1):
+                # If the space the player chose is empty
+                if game_board[number][player_input] == "(  )":
+                    # Input their token
+                    game_board[number][player_input] = "(🔵)"
+                    # If any of the win conditions returns true
+                    if determine_winner(player, "(🔵)"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -185,18 +189,24 @@ def versus_computer():
             display_board()
 
             print(f"It the computer's turn (🔴)")
-            computer_input = random.randint(0, 6)  # Selects a random number between 0-6
+            # Selects a random number between 0-6
+            computer_input = random.randint(0, 6)
             print(f"The computer chose: {computer_input + 1}")
 
             while True:
-                if game_board[0][computer_input] != "(  )":  # If the top row of the column the computer chose is full it must choose another column
-                    print("Oops! The computer chose a column that was full. It will try again")
+                # If the column is full they must choose another column
+                if game_board[0][computer_input] != "(  )":
+                    print("The computer will choose another column")
                 break
 
-            for number in range(6, -1, -1):  # This loop checks every space on the board
-                if game_board[number][computer_input] == "(  )":  # If the space the computer chose is empty
-                    game_board[number][computer_input] = "(🔴)"  # Input their token
-                    if determine_winner("Computer", "(🔴)"):  # If any of the win conditions returns true
+            # This loop checks every space on the board
+            for number in range(6, -1, -1):
+                # If the space the computer chose is empty
+                if game_board[number][computer_input] == "(  )":
+                    # Input their token
+                    game_board[number][computer_input] = "(🔴)"
+                    # If any of the win conditions returns true
+                    if determine_winner("Computer", "(🔴)"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -211,37 +221,49 @@ def determine_winner(player, token):
     to check if there are atleast 4 consecutive tokens of the same type going
     in all directions. If there are it will return true.
     """
-    # This loop will check columns to see if 4 tokens are of the same type
+    # Column check
     for i in range(7):
         for j in range(4):
-            if(game_board[j][i] == token and game_board[j + 1][i] == token and game_board[j + 2][i] == token and game_board[j + 3][i] == token):
+            if(game_board[j][i] == token and
+               game_board[j + 1][i] == token and
+               game_board[j + 2][i] == token and
+               game_board[j + 3][i] == token):
                 display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
 
-    # This loop will check rows to see if 4 tokens are of the same type
+    # Row check
     for i in range(4):
         for j in range(7):
-            if(game_board[j][i] == token and game_board[j][i + 1] == token and game_board[j][i + 2] == token and game_board[j][i + 3] == token):
+            if(game_board[j][i] == token and
+               game_board[j][i + 1] == token and
+               game_board[j][i + 2] == token and
+               game_board[j][i + 3] == token):
                 display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
 
-    # This loop will check the game board diagonally to see if 4 tokens are of the same type
+    # Diagonal check
     for i in range(4):
         for j in range(3, 7):
-            if(game_board[i][j] == token and game_board[i + 1][j - 1] == token and game_board[i + 2][j - 2] == token and game_board[i + 3][j - 3] == token):
+            if(game_board[i][j] == token and
+               game_board[i + 1][j - 1] == token and
+               game_board[i + 2][j - 2] == token and
+               game_board[i + 3][j - 3] == token):
                 display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
                 return True
 
-    # This loop will check the game board diagonally (backwards) to see if 4 tokens are of the same type
+    # Diagonal check (Reverse)
     for i in range(4):
         for j in range(4):
-            if(game_board[j][i] == token and game_board[j + 1][i + 1] == token and game_board[j + 2][i + 2] == token and game_board[j + 3][i + 3] == token):
+            if(game_board[j][i] == token and
+               game_board[j + 1][i + 1] == token and
+               game_board[j + 2][i + 2] == token and
+               game_board[j + 3][i + 3] == token):
                 display_board()
                 print(f"{player} WINS!!!")
                 print("Thank you for playing Connect 4")
@@ -254,7 +276,8 @@ def draw_state():
     board. If all spaces are occupied on the board
     it will return true.
     """
-    count = 0  # This variable will hold the amount of spaces on the board that is full
+    # Holds the amount of occupied slots on board
+    count = 0
 
     # This will loop through the entire board
     for i in range(6):
@@ -262,7 +285,8 @@ def draw_state():
             if game_board[i][j] != "(  )":  # If the current space is not full
                 count += 1  # Increment the count by one
 
-    if count == 42:  # If the count equals 42 (the amount of spaces on the board) this condition will execute
+    # If every space is filled this will execute
+    if count == 42:
         print(f"It was a draw. Game Over!")
         print("Thank you for playing Connect 4")
         return True
