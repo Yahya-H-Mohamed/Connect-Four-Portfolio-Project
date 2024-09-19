@@ -234,13 +234,15 @@ def draw_state():
     board. If all spaces are occupied on the board
     it will return true.
     """
-    count = 0
-    for i in range(6): 
+    count = 0 #This variable will hold the amount of spaces on the board that is full
+
+    #This will loop through the entire board
+    for i in range(6):
         for j in range(7):
-            if game_board[i][j] != "(  )":
-                count += 1
+            if game_board[i][j] != "(  )": #If the current space is not full
+                count += 1 #Increment the count by one
     
-    if count == 42:
+    if count == 42: #If the count equals 42 (the amount of spaces on the board) this condition will execute
         print(f"It was a draw. Game Over!")
         print("Thank you for playing Connect 4")
         return True
