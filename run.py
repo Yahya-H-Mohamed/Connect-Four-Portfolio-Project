@@ -158,7 +158,10 @@ def versus_computer():
                     game_board[number][player_input] = "(🔵)"
                     if determine_winner(player, "(🔵)"):
                         running_game = False
-                    player_turns += 1
+                    elif draw_state():
+                        running_game = False
+                    else:
+                        player_turns += 1
                     break 
         else:
             display_board()
@@ -177,7 +180,10 @@ def versus_computer():
                     game_board[number][computer_input] = "(🔴)"
                     if determine_winner("Computer", "(🔴)"):
                         running_game = False
-                    player_turns += 1
+                    elif draw_state():
+                        running_game = False
+                    else:
+                        player_turns += 1
                     break
 
 def determine_winner(player, token):
