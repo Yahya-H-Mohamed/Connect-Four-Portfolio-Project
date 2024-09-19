@@ -1,5 +1,7 @@
 import random #This will be used in the versus computer mode
 
+game_board = [] # This will hold the connect 4 tokens
+
 def choose_opponent():
     """
     This function asks the user whether they would like
@@ -22,8 +24,6 @@ def choose_opponent():
     else:
         print("Incorrect input. Please enter one of the valid options provided\n")
         choose_opponent()
-
-game_board = [] # This will hold the connect 4 tokens
 
 def generate_board():
     """
