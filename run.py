@@ -34,7 +34,7 @@ def generate_board():
     This function will append an array
     for each row of the game board
     """
-    for i in range(7):
+    for i in range(6):
         # Each row will be added to the game board list
         game_board.append(["(  )"] * 7)
 
@@ -87,7 +87,7 @@ def versus_player():
                 break
 
             # This loop checks every space on the board
-            for number in range(6, -1, -1):
+            for number in range(5, -1, -1):
                 # If the space the player chose is empty
                 if game_board[number][player_one_input] == "(  )":
                     # Input their token
@@ -123,7 +123,7 @@ def versus_player():
                 break
 
             # This loop checks every space on the board
-            for number in range(6, -1, -1):
+            for number in range(5, -1, -1):
                 # If the space the player chose is empty
                 if game_board[number][player_two_input] == "(  )":
                     # Input their token
@@ -174,7 +174,7 @@ def versus_computer():
                 break
 
             # This loop checks every space on the board
-            for number in range(6, -1, -1):
+            for number in range(5, -1, -1):
                 # If the space the player chose is empty
                 if game_board[number][player_input] == "(  )":
                     # Input their token
@@ -202,7 +202,7 @@ def versus_computer():
                 break
 
             # This loop checks every space on the board
-            for number in range(6, -1, -1):
+            for number in range(5, -1, -1):
                 # If the space the computer chose is empty
                 if game_board[number][computer_input] == "(  )":
                     # Input their token
@@ -225,7 +225,7 @@ def determine_winner(player, token):
     """
     # Column check
     for i in range(7):
-        for j in range(4):
+        for j in range(3):
             if(game_board[j][i] == token and
                game_board[j + 1][i] == token and
                game_board[j + 2][i] == token and
@@ -237,7 +237,7 @@ def determine_winner(player, token):
 
     # Row check
     for i in range(4):
-        for j in range(7):
+        for j in range(6):
             if(game_board[j][i] == token and
                game_board[j][i + 1] == token and
                game_board[j][i + 2] == token and
@@ -248,7 +248,7 @@ def determine_winner(player, token):
                 return True
 
     # Diagonal check
-    for i in range(4):
+    for i in range(3):
         for j in range(3, 7):
             if(game_board[i][j] == token and
                game_board[i + 1][j - 1] == token and
@@ -261,7 +261,7 @@ def determine_winner(player, token):
 
     # Diagonal check (Reverse)
     for i in range(4):
-        for j in range(4):
+        for j in range(3):
             if(game_board[j][i] == token and
                game_board[j + 1][i + 1] == token and
                game_board[j + 2][i + 2] == token and
@@ -282,8 +282,8 @@ def draw_state():
     count = 0
 
     # This will loop through the entire board
-    for i in range(6):
-        for j in range(7):
+    for i in range(5):
+        for j in range(6):
             if game_board[i][j] != "(  )":  # If the current space is not full
                 count += 1  # Increment the count by one
 
