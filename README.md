@@ -4,6 +4,21 @@ Connect 4 is a python terminal game. The game involves two players, either a pla
 
 [Click here to play the live project](to be entered)
 
+## Project Objectives
+When building this project I set a few goals to check off upon completing it
+
+- Allow users to play against a friend locally
+
+- - To achieve this objective I built a function that takes an input from the user. The user is given 2 options, player or computer. Upon inputting the correct value for the player mode, the versus_player function is called. This function takes the names of both players and then runs the gameplay loop, alternating turns between each player.
+
+- Allow users to play against a computer (To prevent a minimum 2 person limit)
+
+- - Similarly to the versus player mode, I built another function that is called when the user chooses the versus computer option. This function works like the versus player one however, instead of there being two players taking turns to input a column, the computer randomly generates a number and that number is used as their choice of column
+
+- Keep gameplay fluid and clear (Regularly update board, inform users of their turn)
+
+- - To achieve this I created the display_board function, this function prints out a joined list of the game board. This function is called after every turn because after a turn, the game board is updated. So to give users a visual on what happened in the previous turn, the board is displayed.
+
 ## How To Play
 
 My Connect 4 game follows the same rules as the classic connect 4 board game. Two players place tokens into a 7x6 grid until one of the players stacks 4 consecutive tokens going in any direction.
