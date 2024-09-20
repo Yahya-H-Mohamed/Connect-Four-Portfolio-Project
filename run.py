@@ -147,7 +147,17 @@ def versus_computer():
     """
     running_game = True  # Determines whether loop should continue or terminate
 
-    player = input("Enter your name: ")  # Enter player name
+    while True:
+        try:
+            # Enter player name
+            player = input("Enter your name: ")
+            if len(player) == 0:
+                raise ValueError(f"Please enter a value")
+            else:
+                break
+        except ValueError as e:
+            print(f"Invalid input: {e}, please try again. \n")
+
     player_turns = 1  # This variable will determine which players turn it is
 
     while running_game:

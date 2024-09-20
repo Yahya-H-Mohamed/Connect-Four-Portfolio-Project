@@ -4,6 +4,11 @@ Connect 4 is a python terminal game. The game involves two players, either a pla
 
 [Click here to play the live project](to be entered)
 
+## Planning
+To plan for this project I wrote psuedocode to help me get a rough idea of what steps to take when building the game.
+
+![Psuedocode](/assets/images/psuedocode.png)
+
 ## Project Objectives
 When building this project I set a few goals to check off upon completing it
 
