@@ -10,6 +10,8 @@ def choose_opponent():
     player. It will force the user to re-enter their
     answer if they entered an invalid input
     """
+    print("Welcome to Connect 4")
+    print("First to get 4 tokens consecutively stacked in any direction wins!")
     print("Would you like to play against the computer or another player")
     print("Type 'c' for computer")
     print("Type 'p' for player")
