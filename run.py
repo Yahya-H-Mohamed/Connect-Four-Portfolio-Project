@@ -282,8 +282,8 @@ def draw_state():
     count = 0
 
     # This will loop through the entire board
-    for i in range(5):
-        for j in range(6):
+    for i in range(6):
+        for j in range(7):
             if game_board[i][j] != "(  )":  # If the current space is not full
                 count += 1  # Increment the count by one
 
