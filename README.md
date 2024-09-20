@@ -19,6 +19,9 @@ When building this project I set a few goals to check off upon completing it
 
 - - To achieve this I created the display_board function, this function prints out a joined list of the game board. This function is called after every turn because after a turn, the game board is updated. So to give users a visual on what happened in the previous turn, the board is displayed.
 
+- Target Audience
+- - Connect 4 is a classic board game almost everyone has played before at some point. That is one of the reasons I chose to build it for this project. It was a game that is very easy to grasp and is mainly targetted at children but can be played by people of all ages. The instructions I wrote in the program are simplified because most people know how to play but if they have not then they can still read the brief summary. Most young people have friends that come over to play, hence I added a local multiplayer mode to the game. Additionally those who just want to play connect 4 but don't have anyone to play with can still enjoy the versus computer single player mode.
+
 ## How To Play
 
 My Connect 4 game follows the same rules as the classic connect 4 board game. Two players place tokens into a 7x6 grid until one of the players stacks 4 consecutive tokens going in any direction.
