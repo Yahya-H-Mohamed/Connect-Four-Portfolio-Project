@@ -36,7 +36,7 @@ def generate_board():
     """
     for i in range(7):
         # Each row will be added to the game board list
-        game_board.append(["(  )" * 7])
+        game_board.append(["(  )"] * 7)
 
 
 def display_board():
