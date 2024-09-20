@@ -99,7 +99,7 @@ def versus_player():
                         running_game = False  # End game
                     else:  # If neither of those are true the game continues
                         player_turns += 1
-                        break  # Current turn ends
+                    break  # Current turn ends
         else:
             display_board()
 
@@ -135,7 +135,7 @@ def versus_player():
                         running_game = False  # End game
                     else:  # If neither of those are true the game continues
                         player_turns += 1
-                        break  # Ends current player turn
+                    break  # Ends current player turn
 
 
 def versus_computer():
