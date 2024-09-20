@@ -16,7 +16,7 @@ def choose_opponent():
     print("Type 'c' for computer")
     print("Type 'p' for player")
 
-    opponent = input("Enter: ")
+    opponent = input("Enter: \n")
 
     if opponent.lower() == "c":
         print("Your opponent will be the computer\n")
@@ -59,9 +59,9 @@ def versus_player():
     while True:
         try:
             # First players name
-            player_one = input("Enter the first players name: ")
+            player_one = input("Enter the first players name: \n")
             # Second players name
-            player_two = input("Enter the second players name: ")
+            player_two = input("Enter the second players name: \n")
             if len(player_one) == 0 or len(player_two) == 0:
                 raise ValueError(f"Please enter a name")
             else:
@@ -79,7 +79,7 @@ def versus_player():
             print(f"It is {player_one}'s turn (🔵)")
             while True:
                 try:
-                    player_one_input = int(input("Enter a column(1-7): "))
+                    player_one_input = int(input("Enter a column(1-7): \n"))
                     valid_answer = [1, 2, 3, 4, 5, 6, 7]
                     if player_one_input not in valid_answer:
                         raise ValueError(f"The value must be between 1 and 7.")
@@ -159,7 +159,7 @@ def versus_computer():
     while True:
         try:
             # Enter player name
-            player = input("Enter your name: ")
+            player = input("Enter your name: \n")
             if len(player) == 0:
                 raise ValueError(f"Please enter a name")
             else:
@@ -176,7 +176,7 @@ def versus_computer():
             print(f"It is {player}'s turn (🔵)")
             while True:
                 try:
-                    player_input = int(input("Enter a column(1-7): "))
+                    player_input = int(input("Enter a column(1-7): \n"))
                     valid_answer = [1, 2, 3, 4, 5, 6, 7]
                     if player_input not in valid_answer:
                         raise ValueError(f"The value must be between 1 and 7.")
