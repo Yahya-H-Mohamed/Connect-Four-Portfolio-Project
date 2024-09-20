@@ -55,6 +55,11 @@ Each turn the current player is given the choice between 7 columns to place thei
 
 	![Image showing input validation when user selects a column that is already full](/assets/images/Full-column.png)
 
+## Libraries
+- Random
+
+I used the random library in the player versus computer game mode. The reason this was necessary is because for the computer to take its turn. It needs to pick a number to input its token into a column. I used the random.randint method to choose a random number between 0 and 6.
+
 ## Planned Features
 - Better computer intelligence
 - Multiple token icons for players to choose from
