@@ -37,6 +37,18 @@ Each turn the current player is given the choice between 7 columns to place thei
 - Multiple token icons for players to choose from
 
 ## Testing
+The tests I have carried out on this project are:
+
+- I have entered different inputs for all scenarios to ensure I have caught all potential input errors
+- I have passed my code through PEP8 linter with no issues
+- Run and test my code in the local terminal
+- Run and test my code in the Heroku terminal
+
+### Fixed Bugs
+- During gameplay, in some cases the win condition was not running even though 4 tokens were successfully stacked in a row. I tested this is all game modes and this issue was reoccuring. To fix this I used the win condition loops in the determine_winner function to place a token in every empty space on the board. When doing this I discovered that there was a logic error in my loop range condition and it was not covering every column and row on the board. After correcting this mistake the win condition was correctly running as intended.
+
+### Current Bugs
+There are currently no remaining bugs I could find when testing and running my code
 
 ## Deployment
 This project was deployed using Code Institutes mock terminal for Heroku.
