@@ -2,7 +2,9 @@
 
 Connect 4 is a python terminal game. The game involves two players, either a player against the computer or two live players, competing to be the first person to get 4 consecutive tokens stacked horizontally, vertically or diagonally.
 
-[Click here to play the live project](to be entered)
+[Click here to play the live project](https://connect-4-project-fb4db2173224.herokuapp.com/)
+
+![Image of deployed project](/assets/images/responsive.png)
 
 ## Planning
 To plan for this project I wrote psuedocode to help me get a rough idea of what steps to take when building the game.
