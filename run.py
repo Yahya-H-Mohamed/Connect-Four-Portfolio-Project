@@ -36,7 +36,7 @@ def generate_board():
     """
     for i in range(6):
         # Each row will be added to the game board list
-        game_board.append(["(  )"] * 7)
+        game_board.append(["(    )"] * 7)
 
 
 def display_board():
@@ -91,18 +91,18 @@ def versus_player():
 
             while True:
                 # If the column is full they must choose another column
-                if game_board[0][player_one_input] != "(  )":
+                if game_board[0][player_one_input] != "(    )":
                     print("That column is full. Choose another column.")
                 break
 
             # This loop checks every space on the board
             for number in range(5, -1, -1):
                 # If the space the player chose is empty
-                if game_board[number][player_one_input] == "(  )":
+                if game_board[number][player_one_input] == "(    )":
                     # Input their token
-                    game_board[number][player_one_input] = "(🔵)"
+                    game_board[number][player_one_input] = "( 🔵 )"
                     # If any of the win conditions returns true
-                    if determine_winner(player_one, "(🔵)"):
+                    if determine_winner(player_one, "( 🔵 )"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -115,7 +115,7 @@ def versus_player():
             print(f"It is {player_two}'s turn (🔴)")
             while True:
                 try:
-                    player_two_input = int(input("Enter a column(1-7): "))
+                    player_two_input = int(input("Enter a column(1-7): \n"))
                     valid_answer = [1, 2, 3, 4, 5, 6, 7]
                     if player_two_input not in valid_answer:
                         raise ValueError(f"The value must be between 1 and 7.")
@@ -127,18 +127,18 @@ def versus_player():
 
             while True:
                 # If the column is full they must choose another column
-                if game_board[0][player_two_input] != "(  )":
+                if game_board[0][player_two_input] != "(    )":
                     print("That column is full. Choose another column.")
                 break
 
             # This loop checks every space on the board
             for number in range(5, -1, -1):
                 # If the space the player chose is empty
-                if game_board[number][player_two_input] == "(  )":
+                if game_board[number][player_two_input] == "(    )":
                     # Input their token
-                    game_board[number][player_two_input] = "(🔴)"
+                    game_board[number][player_two_input] = "( 🔴 )"
                     # If any of the win conditions returns true
-                    if determine_winner(player_two, "(🔴)"):
+                    if determine_winner(player_two, "( 🔴 )"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -188,18 +188,18 @@ def versus_computer():
 
             while True:
                 # If the column is full they must choose another column
-                if game_board[0][player_input] != "(  )":
+                if game_board[0][player_input] != "(    )":
                     print("That column is full. Choose another column")
                 break
 
             # This loop checks every space on the board
             for number in range(5, -1, -1):
                 # If the space the player chose is empty
-                if game_board[number][player_input] == "(  )":
+                if game_board[number][player_input] == "(    )":
                     # Input their token
-                    game_board[number][player_input] = "(🔵)"
+                    game_board[number][player_input] = "( 🔵 )"
                     # If any of the win conditions returns true
-                    if determine_winner(player, "(🔵)"):
+                    if determine_winner(player, "( 🔵 )"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -216,18 +216,18 @@ def versus_computer():
 
             while True:
                 # If the column is full they must choose another column
-                if game_board[0][computer_input] != "(  )":
+                if game_board[0][computer_input] != "(    )":
                     print("The computer will choose another column")
                 break
 
             # This loop checks every space on the board
             for number in range(5, -1, -1):
                 # If the space the computer chose is empty
-                if game_board[number][computer_input] == "(  )":
+                if game_board[number][computer_input] == "(    )":
                     # Input their token
-                    game_board[number][computer_input] = "(🔴)"
+                    game_board[number][computer_input] = "( 🔴 )"
                     # If any of the win conditions returns true
-                    if determine_winner("Computer", "(🔴)"):
+                    if determine_winner("Computer", "( 🔴 )"):
                         running_game = False  # End game
                     elif draw_state():  # If the draw condition returns true
                         running_game = False  # End game
@@ -303,7 +303,7 @@ def draw_state():
     # This will loop through the entire board
     for i in range(6):
         for j in range(7):
-            if game_board[i][j] != "(  )":  # If the current space is not full
+            if game_board[i][j] != "(    )":  # If the current space is not full
                 count += 1  # Increment the count by one
 
     # If every space is filled this will execute
